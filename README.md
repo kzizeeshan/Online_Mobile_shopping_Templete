@@ -1,5 +1,5 @@
 # Online_Mobile_shopping_Templete
-On line Mobile shopping Template in Angular js 
+Online Mobile shopping Template in Angular js 
 
 What should we do to check out this Template
 - git clone Repository.
