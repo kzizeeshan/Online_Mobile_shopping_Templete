@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <link href="stylesheets/bootstrap.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<nav class="navbar navbar-default">
+  
+
+    <div class="navbar-header bg-warning ">
+      <span class="text-danger"></span>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="#"><span class="text-danger">ZEEMart</span></a>
+    </div>
+
+ 
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" ><span class="text-warning">Mobiles</span></a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Woman</a></li>
+        <li><a href="#">Electronic</a></li>
+        <li><a href="#">Home & kitchen</a></li>
+        <li><a href="#">Baby & Kids</a></li>
+      </ul>
+    
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"> <a href="#" class="btn" ng-click='cartSummary();'><span class="text-success">Cart {{cart.length}}</a> </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      
+      <p class="text-bold">Search</p>
+      <input style="text-align: center" type="text" ng-model='search.type' placeholder="Search">
+      <hr/>
+      <p class="text-bold">Filter By Types</p>
+        <input type="checkbox"  value="smartphone" data-ng-model='search.type1' data-ng-true-value='smartphone' data-ng-false-value=''> <b>Smart Phone</b>&nbsp;&nbsp;&nbsp;<br>
+                          <input type="checkbox" data-ng-model='search.type1' data-ng-true-value='iphone' data-ng-false-value=''> <b>Feature Phone</b>
+                          <hr/>
+      <p class="text-bold">Filter By Brands</p>
+                          <input type="checkbox" data-ng-model='search.type1' data-ng-true-value='Apple' data-ng-false-value=''> <b>Apple</b>&nbsp;&nbsp;&nbsp;<br>
+                          <input type="checkbox" data-ng-model='search.type2' data-ng-true-value='Samsung' data-ng-false-value='' > <b>samsung</b><br>
+                          <input type="checkbox" data-ng-model='search.type2' data-ng-true-value='Micromax' data-ng-false-value=''> <b>Micromax</b>&nbsp;&nbsp;&nbsp;<br>
+                          <input type="checkbox" data-ng-model='search.type1' data-ng-true-value='Nokia' data-ng-false-value=''> <b>nokia</b><br>
+                          
+                          <hr/> 
+      <p class="text-bold">Filter By Operating System</p> 
+                          <input type="checkbox" data-ng-model='search.type1' data-ng-true-value='!Apple' data-ng-false-value=''> <b>Android</b>&nbsp;&nbsp;&nbsp;<br>
+                          <input type="checkbox" data-ng-model='search.type2' data-ng-true-value='Apple' data-ng-false-value=''> <b>ios</b><br>
+                          <hr/>                 
+    </div>
+
+<div class=" col-sm-8 col-xs-8">
+      <h5 class="center">Showing Mobiles</h5>
+      <br>
+      <div class="row">
+    <div  ng-repeat="product in products | filter:search.type | filter:search.type1 | filter:search.type2" >
+        <div  class="col-sm-4 col-xs-6">
+         <img data-toggle="modal" data-target="#myModal" class="center img-responsives dis-img" ng-src="{{product.image}}" alt="{{product.title}}" >
+          <p class="center">{{product.title}}</p>
+          <p class="center">Rs.{{product.price}}</p>
+
+          <button class="center btn btn-default" ng-click="addCart(product);">Add</button>
+          <hr/>           
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+    <div class=" col-sm-2 col-xs-4 cart-review bg-danger">
+
+      <h3 class="text-bold">Cart View</h3>
+      <h4>{{cart.length}} no. of items</h4>
+       <hr/>
+      <div ng-repeat="product in cart">
+        <img style="width:40px;" ng-src="{{product.image}}" title="{{product.title}}"/>
+         
+          x{{product.quantity}}
+
+          <p>{{product.title}}</p>
+          <p>Rs.{{product.price}}</p>
+          <button class="btn-default" ng-click="addCart(product);">+</button>
+          <button class="btn-default" ng-click="removeOne(product);" ng-show="product.quantity>1">-</button>
+          <button class="text-danger btn-danger" ng-click=removeAll();>x</button>
+        <hr/>
+      </div>
+      <h3 class="text-bold"> Total price : {{totalPrice()}}</h3>
+      <button class="left btn btn-default">Chekout</button>
+      <button class="right btn btn-danger" ng-click=remove();>Clear</button>
+    </div>
+</div>
+  </div>
+</div>
+
+<nav class="navbar navbar-default navbar-btm">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+        
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Policy</a></li>
+        <li><a href="#">T & C</a></li>
+      </ul>
+
+   <ul class="nav navbar-nav navbar-right">
+   
+    <li><a href="#"> <span class="text-dark">Developed By : </span> <span class="text-bold"><u>Zeeshan Qazi </u></span></a></li>
+  </ul>
+
+    </div>
+  </nav>
+
+<script type="text/ng-template" id="cart.html">
+<div class="checkout-page" ><br><h3><b>Cart Summary</b></h3><br></div>
+<div class="container-fluid" ng-repeat="product in cartdetail">
+  <div class="row">
+    <div class="col-sm-4">
+      <img style="width:30px;" ng-src="{{product.image}}" alt="{{product.title}}" >
+      </div>
+    </div>
+    </div>
+  </div>
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
+
+
+</body>
+</html>

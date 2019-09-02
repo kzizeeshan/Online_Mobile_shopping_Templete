@@ -1,0 +1,12 @@
+{"products":[{"id":1,"title":"Micromax","image":"images/1.jpeg","price":25,"ptype":"smartphone"},
+	{"id":2,"title":"Nokia","image":"images/2.jpeg","price":50,"ptype":"smartphone"},
+	{"id":3,"title":"Samsung JS","image":"images/3.jpeg","price":8,"ptype":"smartphone"},
+	{"id":4,"title":"Motorola","image":"images/4.jpeg","price":8,"ptype":"iphone"},
+	{"id":5,"title":"Asus","image":"images/5.jpeg","price":10,"ptype":"iphone"},
+	{"id":6,"title":"Apple","image":"images/6.jpeg","price":2,"ptype":"iphone"},
+	{"id":7,"title":"Micromax","image":"images/1.jpeg","price":25,"ptype":"smartphone"},
+	{"id":8,"title":"Nokia","image":"images/2.jpeg","price":50,"ptype":"smartphone"},
+	{"id":9,"title":"Samsung JS","image":"images/3.jpeg","price":8,"ptype":"smartphone"},
+	{"id":10,"title":"Motorola","image":"images/4.jpeg","price":8,"ptype":"iphone"},
+	{"id":11,"title":"Asus","image":"images/5.jpeg","price":10,"ptype":"iphone"},
+	{"id":12,"title":"Apple","image":"images/6.jpeg","price":2,"ptype":"iphone"}]}
